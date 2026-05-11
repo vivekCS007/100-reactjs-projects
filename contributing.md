@@ -119,8 +119,18 @@ Add your project details inside the `project-item.tsx` file.
     liveLink: "live-link", // optional
     ytLink: "yt-link", // optional
     techStack: ["React js"], // it is ans array ["React js", "Next js", "Tailwind css"]
+    difficulty: "Beginner" // Beginner | Intermediate | Advanced
 }
 ```
+### Difficulty Levels
+
+Every project must include a valid `difficulty` field.
+
+Allowed values:
+
+- `Beginner`
+- `Intermediate`
+- `Advanced`
 
 Ensure:
 
