@@ -28,6 +28,6 @@ export const projectItemConfig: ProjectItems[] = [
     projectImage: "pomodoro-timer.png",
     githubLink: "https://github.com/chopadkartanishka/100-reactjs-projects",
     techStack: ["React js", "JavaScript", "CSS", "HTML"],
-    difficulty: "Level 2",
+    difficulty: "Intermediate",
   },
 ];
