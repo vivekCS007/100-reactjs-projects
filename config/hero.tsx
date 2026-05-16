@@ -35,7 +35,7 @@ export const heroConfig: Hero = {
     href: "/projects",
   },
   description:
-    "Build real-world applications, master modern tools, and elevate your front-end development skills with hands-on experience.",
+    "Build real-world applications, master modern tools, and elevate your frontend development skills with hands-on experience.",
   ctaButton: [
     {
       label: "Get Started",
@@ -51,7 +51,7 @@ export const heroConfig: Hero = {
   flexCards: [
     {
       label: "100+",
-      description: "Hands on Project",
+      description: "Hands-on Projects",
     },
     {
       label: "50K+",
@@ -63,9 +63,9 @@ export const heroConfig: Hero = {
       icon: FaStar,
     },
   ],
-  categoryTitle : {
-    highlight : "Project",
-    normal : "categories"
+  categoryTitle: {
+    highlight: "Project",
+    normal: "Categories"
   },
   categoryCards: [
     {
@@ -79,7 +79,7 @@ export const heroConfig: Hero = {
       description: "Deepen your skills with API integrations, complex hooks, and custom routing mechanisms.",
     },
     {
-      titleLine1: "Advance",
+      titleLine1: "Advanced",
       titleLine2: "Projects",
       description: "Master React with full-stack integrations, performance optimization, and advanced architectures.",
     },
