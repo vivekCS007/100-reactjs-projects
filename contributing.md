@@ -20,7 +20,7 @@ We welcome improvements, new project additions, UI/UX enhancements, and bug fixe
     - [4. Run the Development Server](#4-run-the-development-server)
   - [Adding a New Project](#adding-a-new-project)
     - [Step 1: Upload Your Project Image](#step-1-upload-your-project-image)
-    - [Step 2: Update `config/project-item.tsx`](#step-2-update-configproject-itemtsx)
+    - [Step 2: Update `config/project-Item.tsx`](#step-2-update-configproject-Itemtsx)
   - [Improving UI/UX](#improving-uiux)
   - [Contribution Guidelines](#contribution-guidelines)
   - [Commit Message Standards](#commit-message-standards)
@@ -106,9 +106,9 @@ Ensure the image:
 
 ---
 
-### Step 2: Update `config/project-item.tsx`
+### Step 2: Update `config/project-Item.tsx`
 
-Add your project details inside the `project-item.tsx` file.
+Add your project details inside the `project-Item.tsx` file.
 
 ```tsx
 {
@@ -179,7 +179,7 @@ feat: add new weather app project
 fix: resolve layout issue in project card
 docs: update contributing guidelines
 style: improve button styling
-refactor: optimize project-item component
+refactor: optimize project-Item component
 chore: update dependencies
 ```
 
