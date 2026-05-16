@@ -8,10 +8,18 @@ body:
         Thanks for reporting a bug.
         Please fill out the form with enough detail for maintainers to reproduce and triage the issue.
 
+  - type: markdown
+    attributes:
+      value: |
+        **Formatting note**
+        Do not use markdown headings such as `#`, `##`, or `###` inside any response box.
+        These fields already render with headings in the final issue.
+        Use plain text, bullet points (-), or numbered lists instead(1., 2., 3.).
+
   - type: checkboxes
     id: checks
     attributes:
-      label: Pre-Submission Checks
+      label: "[ISSUE FORM] Pre-Submission Checks"
       description: Confirm the following before submitting.
       options:
         - label: I have searched the existing issues and confirmed this bug has not been reported already.
@@ -22,7 +30,7 @@ body:
   - type: dropdown
     id: contribution_program
     attributes:
-      label: Contribution Program
+      label: "[ISSUE FORM] Contribution Program"
       description: Select the program you are contributing under.
       options:
         - General / Not part of a contribution program
@@ -34,7 +42,7 @@ body:
   - type: dropdown
     id: difficulty
     attributes:
-      label: Difficulty Level
+      label: "[ISSUE FORM] Difficulty Level"
       description: Estimate the difficulty of fixing this issue.
       options:
         - Beginner
@@ -47,7 +55,7 @@ body:
   - type: textarea
     id: current_behavior
     attributes:
-      label: Current Behavior
+      label: "[ISSUE FORM] Current Behavior"
       description: Describe what is happening right now.
       placeholder: The page crashes when I click...
     validations:
@@ -56,7 +64,7 @@ body:
   - type: textarea
     id: steps_to_reproduce
     attributes:
-      label: Steps to Reproduce
+      label: "[ISSUE FORM] Steps to Reproduce"
       description: Share the exact steps needed to reproduce the bug.
       placeholder: |
         1. Go to ...
@@ -68,7 +76,7 @@ body:
   - type: textarea
     id: expected_behavior
     attributes:
-      label: Expected Behavior
+      label: "[ISSUE FORM] Expected Behavior"
       description: Describe what should happen instead.
       placeholder: The page should...
     validations:
@@ -77,20 +85,20 @@ body:
   - type: input
     id: environment
     attributes:
-      label: Environment
+      label: "[ISSUE FORM] Environment"
       description: Add any relevant environment details.
       placeholder: Windows 11, Chrome 136, mobile viewport
 
   - type: textarea
     id: screenshots
     attributes:
-      label: Screenshots or References
+      label: "[ISSUE FORM] Screenshots or References"
       description: Paste screenshot links or any references that help explain the issue.
       placeholder: Add screenshot links, console output, or related references here.
 
   - type: textarea
     id: additional_context
     attributes:
-      label: Additional Context
+      label: "[ISSUE FORM] Additional Context"
       description: Share anything else that would help triage this bug.
       placeholder: Additional details...

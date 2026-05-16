@@ -8,10 +8,18 @@ body:
         Thanks for suggesting an improvement.
         Please describe the problem clearly and explain the outcome you want to see.
 
+  - type: markdown
+    attributes:
+      value: |
+        **Formatting note**
+        Do not use markdown headings such as `#`, `##`, or `###` inside any response box.
+        These fields already render with headings in the final issue.
+        Use plain text, bullet points (-), or numbered lists instead(1., 2., 3.).
+
   - type: checkboxes
     id: checks
     attributes:
-      label: Pre-Submission Checks
+      label: "[ISSUE FORM] Pre-Submission Checks"
       description: Confirm the following before submitting.
       options:
         - label: I have searched the existing issues and confirmed this request has not been raised already.
@@ -22,7 +30,7 @@ body:
   - type: dropdown
     id: contribution_program
     attributes:
-      label: Contribution Program
+      label: "[ISSUE FORM] Contribution Program"
       description: Select the program you are contributing under.
       options:
         - General / Not part of a contribution program
@@ -34,7 +42,7 @@ body:
   - type: dropdown
     id: difficulty
     attributes:
-      label: Difficulty Level
+      label: "[ISSUE FORM] Difficulty Level"
       description: Estimate the implementation difficulty.
       options:
         - Beginner
@@ -47,7 +55,7 @@ body:
   - type: textarea
     id: problem_description
     attributes:
-      label: Problem Description
+      label: "[ISSUE FORM] Problem Description"
       description: What problem or limitation are you trying to solve?
       placeholder: Right now contributors cannot...
     validations:
@@ -56,7 +64,7 @@ body:
   - type: textarea
     id: expected_solution
     attributes:
-      label: Expected Solution
+      label: "[ISSUE FORM] Expected Solution"
       description: Describe the solution or behavior you want.
       placeholder: It would be better if...
     validations:
@@ -65,20 +73,20 @@ body:
   - type: textarea
     id: alternatives
     attributes:
-      label: Alternatives Considered
+      label: "[ISSUE FORM] Alternatives Considered"
       description: Mention any other solutions or approaches you considered.
       placeholder: Optional alternative approaches...
 
   - type: textarea
     id: screenshots
     attributes:
-      label: Mockups, Screenshots, or References
+      label: "[ISSUE FORM] Mockups, Screenshots, or References"
       description: Add supporting visuals or references if available.
       placeholder: Add screenshot links, design references, or examples here.
 
   - type: textarea
     id: additional_context
     attributes:
-      label: Additional Context
+      label: "[ISSUE FORM] Additional Context"
       description: Share anything else that would help evaluate this request.
       placeholder: Additional details...
