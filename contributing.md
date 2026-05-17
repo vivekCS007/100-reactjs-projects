@@ -216,10 +216,10 @@ chore: update dependencies
 
 If you find a bug or want to suggest a feature:
 
-1. Open an issue.
-2. Provide a clear title and description.
-3. Include screenshots or steps to reproduce.
-4. Mention your environment (browser, OS, device).
+1. Open the matching issue form.
+2. Select your contribution program: `General`, `GSSoC 2026`, or `NSoC 2026`.
+3. Fill in the structured fields with a clear problem statement and expected solution.
+4. Include screenshots, references, reproduction steps, and environment details when relevant.
 
 ---
 
