@@ -40,4 +40,13 @@ export const projectItemConfig: ProjectItems[] = [
     techStack: ["React js", "TypeScript", "CSS", "Vite"],
     difficulty: "Beginner",
   },
+  {
+    projectName: "Text Cipher",
+    description: "An interactive text encoder and decoder supporting Base64 and Caesar Shift.",
+    projectImage: "text-cipher.png",
+    githubLink: "https://github.com/Reva2473/Text-Cipher",
+    liveLink: "https://text-cipher.vercel.app/",
+    techStack: ["React", "Tailwind CSS", "TypeScript"],
+    difficulty: "Beginner",
+  },
 ];
