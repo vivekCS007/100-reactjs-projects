@@ -31,6 +31,14 @@ export const projectItemConfig: ProjectItems[] = [
     difficulty: "Intermediate",
   },
   {
+    projectName: "Kitchenly",
+    description:"Recipe Manager + Smart Shopping List helps users capture recipes (URL, upload, or manual), standardize ingredients, scale servings, and automatically generate optimized shopping lists grouped by store sections with aggregated quantities—reducing duplicates and making shopping faster and more efficient.",
+    projectImage: "kitchenly.png",
+    githubLink: "https://github.com/Aarya1402/kitchenly",
+    techStack: ["Next js","Tailwind CSS","PostgreSQL", "Prisma"], 
+    difficulty: "Intermediate"
+  },
+  {
     projectName: "SpeedTap",
     description:
       "A fast-paced reaction time game built with React where players click randomly appearing targets before time runs out while tracking scores and improving reflex speed.",
