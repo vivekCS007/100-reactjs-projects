@@ -51,6 +51,10 @@ export const projectItemConfig: ProjectItems[] = [
     liveLink: "https://speed-tap-two.vercel.app/",
     techStack: ["React js", "TypeScript", "CSS", "Vite"],
     difficulty: "Beginner",
+    skills: ["State Management", "Event Handling", "Timers"],
+    learningPath: ["React Basics", "Game Development"],
+    estimatedTime: "2-4 days",
+    prerequisites: ["React Hooks", "Basic Math Logic"],
   },
   {
     projectName: "SplitSmart",
@@ -60,7 +64,11 @@ export const projectItemConfig: ProjectItems[] = [
     githubLink: "https://github.com/ParthBhuptani/splitsmart",
     liveLink: "https://splitsmart-expense.vercel.app",
     techStack: ["React js", "Tailwind css", "TypeScript"],
-    difficulty: "Intermediate"
+    difficulty: "Intermediate",
+    skills: ["Local Storage", "Complex State", "Form Handling"],
+    learningPath: ["Frontend Mastery", "Utility Apps"],
+    estimatedTime: "1-2 weeks",
+    prerequisites: ["TypeScript Basics", "React Context/State"],
   },
   {
     projectName: "Text Cipher",
@@ -70,6 +78,10 @@ export const projectItemConfig: ProjectItems[] = [
     liveLink: "https://text-cipher.vercel.app/",
     techStack: ["React", "Tailwind CSS", "TypeScript"],
     difficulty: "Beginner",
+    skills: ["String Manipulation", "Encoding/Decoding"],
+    learningPath: ["React Basics", "Cryptography Basics"],
+    estimatedTime: "1-3 days",
+    prerequisites: ["JavaScript Strings"],
   },
 ];
 
