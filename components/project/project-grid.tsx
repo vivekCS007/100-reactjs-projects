@@ -5,8 +5,17 @@ import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { FaBookmark, FaChevronDown, FaGithub, FaLink, FaSearch, FaYoutube } from "react-icons/fa";
+import { FaBookmark, FaChevronDown, FaGithub, FaLink, FaSearch, FaYoutube, FaClock, FaTags, FaRoute, FaBook } from "react-icons/fa";
 import SearchBar from "./search-bar";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 
 const PROJECTS_PER_PAGE = 6;
 
@@ -195,6 +204,58 @@ export default function ProjectGrid() {
                         ))}
                       </div>
                     )}
+
+                {(item.skills || item.estimatedTime || item.learningPath || item.prerequisites) && (
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <Button variant="outline" size="sm" className="mt-3 w-full flex items-center justify-center gap-2 h-8 text-xs bg-muted/20 hover:bg-muted/50 border-border text-foreground/80">
+                        <FaBook /> View Learning Guide
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent className="sm:max-w-[425px]">
+                      <DialogHeader>
+                        <DialogTitle>{item.projectName} - Learning Guide</DialogTitle>
+                        <DialogDescription>
+                          A structured overview of the skills, path, and prerequisites for this project.
+                        </DialogDescription>
+                      </DialogHeader>
+                      <div className="grid gap-4 py-2">
+                        {item.estimatedTime && (
+                          <div className="flex flex-col gap-1.5">
+                            <h4 className="text-sm font-semibold flex items-center gap-2"><FaClock className="text-muted-foreground" /> Estimated Time</h4>
+                            <p className="text-sm text-muted-foreground pl-6">{item.estimatedTime}</p>
+                          </div>
+                        )}
+                        {item.learningPath && (
+                          <div className="flex flex-col gap-1.5">
+                            <h4 className="text-sm font-semibold flex items-center gap-2"><FaRoute className="text-muted-foreground" /> Learning Path</h4>
+                            <p className="text-sm text-muted-foreground pl-6">{item.learningPath.join(" → ")}</p>
+                          </div>
+                        )}
+                        {item.prerequisites && (
+                          <div className="flex flex-col gap-1.5">
+                            <h4 className="text-sm font-semibold flex items-center gap-2"><FaBook className="text-muted-foreground" /> Prerequisites</h4>
+                            <div className="flex flex-wrap gap-2 pl-6 mt-1">
+                              {item.prerequisites.map((prereq, i) => (
+                                <span key={`modal-prereq-${i}`} className="rounded-full border border-border bg-muted/50 px-2.5 py-0.5 text-xs text-muted-foreground">{prereq}</span>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+                        {item.skills && (
+                          <div className="flex flex-col gap-1.5">
+                            <h4 className="text-sm font-semibold flex items-center gap-2"><FaTags className="text-muted-foreground" /> Skills Taught</h4>
+                            <div className="flex flex-wrap gap-2 pl-6 mt-1">
+                              {item.skills.map((skill, i) => (
+                                <span key={`modal-skill-${i}`} className="rounded-full border border-border bg-muted/50 px-2.5 py-0.5 text-xs text-muted-foreground">{skill}</span>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    </DialogContent>
+                  </Dialog>
+                )}
 
                     <div className="mt-5 flex items-center gap-3">
                       {item.liveLink && (
