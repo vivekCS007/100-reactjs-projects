@@ -4,7 +4,7 @@ import { projectConfig } from "@/config/projects";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { FaGithub, FaLink, FaSearch, FaYoutube , FaBookmark} from "react-icons/fa";
+import { FaGithub, FaLink, FaSearch, FaYoutube , FaBookmark, FaClock, FaTags, FaRoute, FaBook} from "react-icons/fa";
 import SearchBar from "./search-bar";
 
 export default function ProjectGrid() {
@@ -16,6 +16,7 @@ export default function ProjectGrid() {
      const storedFavorites = localStorage.getItem("favoriteProjects");
 
      if (storedFavorites) {
+       // eslint-disable-next-line react-hooks/set-state-in-effect
        setFavorites(JSON.parse(storedFavorites));
      }
   }, []);
@@ -46,9 +47,23 @@ export default function ProjectGrid() {
       const matchesSearch =
         item.projectName.toLowerCase().includes(query) ||
         item.description.toLowerCase().includes(query) ||
+        item.difficulty.toLowerCase().includes(query) ||
+        (item.estimatedTime && item.estimatedTime.toLowerCase().includes(query)) ||
         (item.techStack && 
           item.techStack.some((tech: string) => 
             tech.toLowerCase().includes(query)
+        )) ||
+        (item.skills && 
+          item.skills.some((skill: string) => 
+            skill.toLowerCase().includes(query)
+        )) ||
+        (item.learningPath && 
+          item.learningPath.some((path: string) => 
+            path.toLowerCase().includes(query)
+        )) ||
+        (item.prerequisites && 
+          item.prerequisites.some((prereq: string) => 
+            prereq.toLowerCase().includes(query)
         ));
 
     const matchesFavorites =
@@ -147,6 +162,35 @@ export default function ProjectGrid() {
                         className="rounded-full border border-border bg-muted px-2.5 py-0.5 text-xs text-muted-foreground"
                       >
                         {tech}
+                      </span>
+                    ))}
+                  </div>
+                )}
+
+                {(item.skills || item.estimatedTime || item.learningPath || item.prerequisites) && (
+                  <div className="mt-1 flex flex-wrap gap-2">
+                    {item.estimatedTime && (
+                      <span className="flex items-center gap-1.5 rounded-full border border-border bg-muted/30 px-2.5 py-0.5 text-xs text-muted-foreground">
+                        <FaClock />
+                        {item.estimatedTime}
+                      </span>
+                    )}
+                    {item.learningPath && (
+                      <span className="flex items-center gap-1.5 rounded-full border border-border bg-muted/30 px-2.5 py-0.5 text-xs text-muted-foreground">
+                        <FaRoute />
+                        {item.learningPath.join(" → ")}
+                      </span>
+                    )}
+                    {item.prerequisites && item.prerequisites.map((prereq, i) => (
+                      <span key={`prereq-${i}`} className="flex items-center gap-1.5 rounded-full border border-border bg-muted/30 px-2.5 py-0.5 text-xs text-muted-foreground">
+                        <FaBook />
+                        {prereq}
+                      </span>
+                    ))}
+                    {item.skills && item.skills.map((skill, i) => (
+                      <span key={`skill-${i}`} className="flex items-center gap-1.5 rounded-full border border-border bg-muted/30 px-2.5 py-0.5 text-xs text-muted-foreground">
+                        <FaTags />
+                        {skill}
                       </span>
                     ))}
                   </div>

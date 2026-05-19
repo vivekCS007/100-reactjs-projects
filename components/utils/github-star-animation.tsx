@@ -60,6 +60,7 @@ export default function GitHubStarsAnimation({
   // Fetch stargazers and star count
   useEffect(() => {
     if (providedStargazers && providedStarCount !== undefined) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setStargazers(providedStargazers);
       setStarCount(providedStarCount);
       setIsLoading(false);
@@ -145,6 +146,7 @@ export default function GitHubStarsAnimation({
   useEffect(() => {
     if (starCount === 0 || shouldReduceMotion) {
       if (shouldReduceMotion) {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setDisplayCount(starCount);
         countSpring.set(starCount);
       }

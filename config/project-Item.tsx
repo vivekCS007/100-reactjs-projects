@@ -10,6 +10,10 @@ export const projectItemConfig: ProjectItems[] = [
     liveLink: "https://sendlyfile.vercel.app/",
     techStack: ["Next.js", "TypeScript", "Tailwind", "Supabase", "Prisma"],
     difficulty: "Advanced",
+    skills: ["File Handling", "Database", "Authentication"],
+    learningPath: ["Fullstack Next.js", "Backend Integration"],
+    estimatedTime: "2-3 weeks",
+    prerequisites: ["React", "SQL basics"],
   },
   {
     projectName: "ShowTime",
@@ -20,6 +24,10 @@ export const projectItemConfig: ProjectItems[] = [
     liveLink: "https://harmonious-maamoul-e4854c.netlify.app/",
     techStack: ["React js", "JavaScript", "CSS", "HTML"],
     difficulty: "Intermediate",
+    skills: ["API Fetching", "State Management", "Routing"],
+    learningPath: ["Frontend Mastery"],
+    estimatedTime: "1-2 weeks",
+    prerequisites: ["Basic React Hooks", "Promises/Async"],
   },
   {
     projectName: "Pomodoro Timer",
@@ -29,5 +37,10 @@ export const projectItemConfig: ProjectItems[] = [
     githubLink: "https://github.com/chopadkartanishka/100-reactjs-projects",
     techStack: ["React js", "JavaScript", "CSS", "HTML"],
     difficulty: "Intermediate",
+    skills: ["Timers & Intervals", "React State"],
+    learningPath: ["React Basics", "Utility Apps"],
+    estimatedTime: "3-5 days",
+    prerequisites: ["JavaScript Basics", "useState/useEffect"],
   },
 ];
+
