@@ -65,11 +65,15 @@ export default function ProjectGrid() {
         <div className="mt-6 mb-8 flex items-center gap-4">
           <button
             onClick={() => setShowFavorites((prev) => !prev)}
+            aria-pressed={showFavorites}
+            aria-label={
+              showFavorites ? "Show all projects" : "Show favorite projects only"
+            }
             className={`flex items-center gap-2 px-4 py-2 rounded-md border ${
               showFavorites ? "border-yellow-500/30 bg-yellow-500/10 text-yellow-400" : "border-border bg-background text-foreground hover:bg-muted"
             } transition-colors duration-300 hover:bg-primary/10`}
           >
-            <FaBookmark />
+            <FaBookmark aria-hidden="true" />
             {showFavorites ? "Show All" : "Show Favorites"}
           </button>
         </div>
@@ -95,13 +99,19 @@ export default function ProjectGrid() {
                 <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/20 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                 <button
                   onClick={() => toggleFavorite(item.projectName)}
+  aria-pressed={favorites.includes(item.projectName)}
+  aria-label={
+    favorites.includes(item.projectName)
+      ? `Remove ${item.projectName} from favorites`
+      : `Add ${item.projectName} to favorites`
+  }
                   className={`absolute top-3 right-3 z-10 flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-black/40 backdrop-blur-md transition-all duration-300 hover:scale-110 hover:bg-black/60 ${
                     favorites.includes(item.projectName)
                       ? "text-yellow-400"
                       : "text-white/70"
                   }`}
                 >
-                  <FaBookmark />
+                  <FaBookmark aria-hidden="true" />
                 </button>
               </div>
 
@@ -112,7 +122,8 @@ export default function ProjectGrid() {
                   </h3>
 
                   <span
-                   className={`rounded-full border px-3 py-1 text-xs font-medium whitespace-nowrap ${
+                   aria-label={`Difficulty level: ${item.difficulty}`}
+  className={`rounded-full border px-3 py-1 text-xs font-medium whitespace-nowrap ${
                      item.difficulty === "Beginner"
                         ? "border-green-500/30 bg-green-500/10 text-green-400"
                         : item.difficulty === "Intermediate"
@@ -148,7 +159,7 @@ export default function ProjectGrid() {
                       target="_blank"
                       className="flex h-9 w-9 items-center justify-center rounded-full border border-border bg-background transition-all duration-300 hover:scale-110 hover:bg-muted"
                     >
-                      <FaLink size={16} />
+                      <FaLink aria-hidden="true" size={16} />
                     </Link>
                   )}
 
@@ -158,7 +169,7 @@ export default function ProjectGrid() {
                       target="_blank"
                       className="flex h-9 w-9 items-center justify-center rounded-full border border-border bg-background transition-all duration-300 hover:scale-110 hover:bg-muted"
                     >
-                      <FaGithub size={16} />
+                      <FaGithub aria-hidden="true" size={16} />
                     </Link>
                   )}
 
@@ -168,7 +179,7 @@ export default function ProjectGrid() {
                       target="_blank"
                       className="flex h-9 w-9 items-center justify-center rounded-full border border-border bg-background transition-all duration-300 hover:scale-110 hover:bg-red-500 hover:text-white"
                     >
-                      <FaYoutube size={16} />
+                      <FaYoutube aria-hidden="true" size={16} />
                     </Link>
                   )}
                 </div>
@@ -178,7 +189,10 @@ export default function ProjectGrid() {
         </div>
       ) : (
         <div className="flex flex-col items-center justify-center py-16 text-center">
-          <FaSearch className="mb-4 text-4xl text-foreground/50" />
+          <FaSearch
+  aria-hidden="true"
+  className="mb-4 text-4xl text-foreground/50"
+/>
           <h3 className="text-lg font-semibold">
             {projectConfig.notFound.title}
           </h3>

@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/utils/theme-provider";
 import { generateMetadata as getMetadata } from "@/config/meta";
 import "@/styles/globals.css";
 import { Outfit } from "next/font/google";
+import { ViewTransitions } from "next-view-transitions";
 import { Toaster } from "sonner";
 
 const fontSans = Outfit({
@@ -20,26 +21,28 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        suppressHydrationWarning
-        className={`${fontSans.variable} antialiased font-poppins`}
-      >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
+    <ViewTransitions>
+      <html lang="en" suppressHydrationWarning>
+        <body
+          suppressHydrationWarning
+          className={`${fontSans.variable} antialiased font-poppins`}
         >
-          <TooltipProvider>
-            <Container className="min-h-screen py-6">
-              <Navbar />
-              {children}
-            </Container>
-            <Toaster richColors position="top-right" />
-          </TooltipProvider>
-        </ThemeProvider>
-      </body>
-    </html>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <TooltipProvider>
+              <Container className="min-h-screen py-6">
+                <Navbar />
+                {children}
+              </Container>
+              <Toaster richColors position="top-right" />
+            </TooltipProvider>
+          </ThemeProvider>
+        </body>
+      </html>
+    </ViewTransitions>
   );
 }

@@ -16,6 +16,8 @@ export default function NavMenu({ open, setOpen }: NavMenu) {
 
   return (
     <ul
+    id="mobile-menu"
+  aria-label="Mobile navigation menu"
       className="absolute top-full left-1/2 w-full max-w-sm
       -translate-x-1/2 rounded-b-2xl border border-border
       bg-background/95 backdrop-blur-md shadow-lg
@@ -29,6 +31,7 @@ export default function NavMenu({ open, setOpen }: NavMenu) {
             <Link
               href={item.href}
               onClick={() => setOpen(false)}
+              aria-current={isActive ? "page" : undefined}
               className={`text-sm font-medium transition-colors ${
                 isActive
                   ? "text-foreground"
