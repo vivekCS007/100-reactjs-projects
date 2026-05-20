@@ -32,11 +32,12 @@ export const projectItemConfig: ProjectItems[] = [
   },
   {
     projectName: "Kitchenly",
-    description:"Recipe Manager + Smart Shopping List helps users capture recipes (URL, upload, or manual), standardize ingredients, scale servings, and automatically generate optimized shopping lists grouped by store sections with aggregated quantities—reducing duplicates and making shopping faster and more efficient.",
+    description:
+      "Recipe Manager + Smart Shopping List helps users capture recipes (URL, upload, or manual), standardize ingredients, scale servings, and automatically generate optimized shopping lists grouped by store sections with aggregated quantities—reducing duplicates and making shopping faster and more efficient.",
     projectImage: "kitchenly.png",
     githubLink: "https://github.com/Aarya1402/kitchenly",
-    techStack: ["Next js","Tailwind CSS","PostgreSQL", "Prisma"], 
-    difficulty: "Intermediate"
+    techStack: ["Next js", "Tailwind CSS", "PostgreSQL", "Prisma"],
+    difficulty: "Intermediate",
   },
   {
     projectName: "SpeedTap",
@@ -50,17 +51,18 @@ export const projectItemConfig: ProjectItems[] = [
   },
   {
     projectName: "SplitSmart",
-    description: 
+    description:
       "Split bills equally, by item, or by percentage. Features AI bill parsing, group management, history tracking, and localStorage persistence.",
     projectImage: "splitsmart.png",
     githubLink: "https://github.com/ParthBhuptani/splitsmart",
     liveLink: "https://splitsmart-expense.vercel.app",
     techStack: ["React js", "Tailwind css", "TypeScript"],
-    difficulty: "Intermediate"
+    difficulty: "Intermediate",
   },
   {
     projectName: "Text Cipher",
-    description: "An interactive text encoder and decoder supporting Base64 and Caesar Shift.",
+    description:
+      "An interactive text encoder and decoder supporting Base64 and Caesar Shift.",
     projectImage: "text-cipher.png",
     githubLink: "https://github.com/Reva2473/Text-Cipher",
     liveLink: "https://text-cipher.vercel.app/",
