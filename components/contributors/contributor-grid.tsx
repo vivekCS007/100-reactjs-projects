@@ -7,6 +7,14 @@ export default async function ContributorGrid() {
     (a, b) => b.contributions - a.contributions,
   );
 
+  if (contributors.length === 0) {
+    return (
+      <div className="mt-20 rounded-3xl border border-dashed border-border/70 bg-background/60 p-6 text-left text-sm leading-6 text-muted-foreground shadow-sm backdrop-blur-sm">
+        Contributor data is temporarily unavailable. GitHub rate limits or a transient fetch failure can delay the public leaderboard. Please try again shortly.
+      </div>
+    );
+  }
+
   return (
     <div className="mt-20 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
       {contributors.map((user: GitHubContributor, index: number) => (

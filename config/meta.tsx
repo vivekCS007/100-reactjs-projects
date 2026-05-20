@@ -79,6 +79,24 @@ export const pageMetadata: Record<string, PageMeta> = {
     twitterCard: "summary_large_image",
   },
 
+  "/dashboard": {
+    title: "Contributor Dashboard | 100+ Reactjs Projects",
+    description:
+      "Follow issue activity, pull request progress, contributor leaderboard updates, and contribution workflow from one centralized dashboard.",
+    keywords: [
+      "100+ Reactjs projects dashboard",
+      "GitHub issue tracker",
+      "pull request dashboard",
+      "open source contribution",
+      "contributor leaderboard",
+      "repository activity",
+      "gssoc",
+      "GirlScript Summer of Code",
+    ],
+    ogImage: "/meta/projects.png",
+    twitterCard: "summary_large_image",
+  },
+
   "/contributors": {
     title: "Contributors of 100+ Reactjs projects",
     description:
