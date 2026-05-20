@@ -48,7 +48,11 @@ export const projectItemConfig: ProjectItems[] = [
     projectImage: "kitchenly.png",
     githubLink: "https://github.com/Aarya1402/kitchenly",
     techStack: ["Next js","Tailwind CSS","PostgreSQL", "Prisma"], 
-    difficulty: "Intermediate"
+    difficulty: "Intermediate",
+    skills: ["Database Modeling", "API Routes", "State Management"],
+    learningPath: ["Full-stack Next.js", "Data Aggregation"],
+    estimatedTime: "2-3 weeks",
+    prerequisites: ["React Fundamentals", "Basic SQL/Prisma"],
   },
   {
     projectName: "SpeedTap",
