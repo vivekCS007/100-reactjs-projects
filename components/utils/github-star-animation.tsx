@@ -11,6 +11,8 @@ const EASE_OUT_CUBIC = [0.215, 0.61, 0.355, 1] as const;
 const COUNTDOWN_DURATION = 2000;
 const AVATAR_COUNT = 5;
 const STAGGER_DELAY = 0.05;
+const COUNT_VALUE_WIDTH_CLASS = "w-[5ch]";
+const COUNT_LABEL_WIDTH_CLASS = "w-10";
 
 export interface Stargazer {
   avatar_url: string;
@@ -70,6 +72,7 @@ export default function GitHubStarsAnimation({
       try {
         setIsLoading(true);
         setError(false);
+        let didLoadStarCount = false;
 
         // Try to fetch from custom API endpoint first
         if (apiEndpoint) {
@@ -83,9 +86,12 @@ export default function GitHubStarsAnimation({
             }
             if (data.stars !== undefined) {
               setStarCount(data.stars);
+              didLoadStarCount = true;
             }
-            setIsLoading(false);
-            return;
+
+            if (didLoadStarCount) {
+              return;
+            }
           }
         }
 
@@ -109,6 +115,7 @@ export default function GitHubStarsAnimation({
           try {
             const repoData = await repoResponse.json();
             setStarCount(repoData.stargazers_count || 0);
+            didLoadStarCount = true;
           } catch {
             // Silently fail for star count
           }
@@ -124,6 +131,8 @@ export default function GitHubStarsAnimation({
             // Silently fail for stargazers
           }
         }
+
+        setError(!didLoadStarCount);
       } catch {
         setError(true);
       } finally {
@@ -177,19 +186,48 @@ export default function GitHubStarsAnimation({
     animate();
   }, [starCount, countSpring, shouldReduceMotion]);
 
+  const hasStarCountError = error && starCount === 0;
+  const countLabel = hasStarCountError
+    ? "stars"
+    : displayCount === 1
+      ? "star"
+      : "stars";
+  const countValue = hasStarCountError ? "--" : displayCount.toLocaleString();
+
   if (isLoading) {
     return (
       <div
-        className={cn("flex items-center gap-3 text-foreground/60", className)}
+        className={cn(
+          "flex items-center",
+          showAvatars ? "gap-3" : "gap-1.5",
+          className,
+        )}
       >
-        <div className="h-10 w-10 animate-pulse rounded-full bg-foreground/20" />
-        <div className="h-6 w-20 animate-pulse rounded bg-foreground/20" />
+        {showAvatars && (
+          <div className="h-10 w-10 animate-pulse rounded-full bg-foreground/20" />
+        )}
+        <div
+          className={cn(
+            "flex h-6 items-center gap-1.5 font-medium whitespace-nowrap",
+            countClassName,
+          )}
+        >
+          <Star className="h-4 w-4 text-foreground/20" />
+          <div
+            className={cn(
+              "h-4 animate-pulse rounded bg-foreground/20",
+              COUNT_VALUE_WIDTH_CLASS,
+            )}
+          />
+          <div
+            className={cn(
+              "h-4 animate-pulse rounded bg-foreground/20",
+              COUNT_LABEL_WIDTH_CLASS,
+            )}
+          />
+        </div>
       </div>
     );
-  }
-
-  if (error && starCount === 0) {
-    return null;
   }
 
   const visibleAvatars = stargazers.slice(0, maxAvatars);
@@ -205,10 +243,10 @@ export default function GitHubStarsAnimation({
                 shouldReduceMotion
                   ? { opacity: 1 }
                   : {
-                      opacity: 1,
-                      scale: 1,
-                      x: 0,
-                    }
+                    opacity: 1,
+                    scale: 1,
+                    x: 0,
+                  }
               }
               aria-label={`${stargazer.login}'s GitHub profile`}
               className={cn(
@@ -220,10 +258,10 @@ export default function GitHubStarsAnimation({
                 shouldReduceMotion
                   ? { opacity: 1 }
                   : {
-                      opacity: 0,
-                      scale: 0.8,
-                      x: -20,
-                    }
+                    opacity: 0,
+                    scale: 0.8,
+                    x: -20,
+                  }
               }
               key={stargazer.login}
               rel="noopener noreferrer"
@@ -235,10 +273,10 @@ export default function GitHubStarsAnimation({
                 shouldReduceMotion
                   ? { duration: 0 }
                   : {
-                      duration: TRANSITION_DURATION,
-                      delay: index * STAGGER_DELAY,
-                      ease: EASE_OUT_CUBIC,
-                    }
+                    duration: TRANSITION_DURATION,
+                    delay: index * STAGGER_DELAY,
+                    ease: EASE_OUT_CUBIC,
+                  }
               }
               whileHover={shouldReduceMotion ? {} : { scale: 1.1, zIndex: 20 }}
             >
@@ -255,7 +293,10 @@ export default function GitHubStarsAnimation({
       {/* Star count */}
       <motion.div
         animate={shouldReduceMotion ? { opacity: 1 } : { opacity: 1, scale: 1 }}
-        className={cn("flex items-center gap-1.5 font-medium", countClassName)}
+        className={cn(
+          "flex h-6 items-center gap-1.5 font-medium whitespace-nowrap",
+          countClassName,
+        )}
         initial={
           shouldReduceMotion ? { opacity: 1 } : { opacity: 0, scale: 0.9 }
         }
@@ -263,28 +304,37 @@ export default function GitHubStarsAnimation({
           shouldReduceMotion
             ? { duration: 0 }
             : {
-                duration: TRANSITION_DURATION,
-                ease: EASE_OUT_CUBIC,
-              }
+              duration: TRANSITION_DURATION,
+              ease: EASE_OUT_CUBIC,
+            }
         }
       >
         <Star className="h-4 w-4 fill-current" />
         <motion.span
-          animate={shouldReduceMotion ? { scale: 1 } : { scale: [1, 1.1, 1] }}
-          className="tabular-nums"
+          animate={
+            shouldReduceMotion || hasStarCountError
+              ? { scale: 1 }
+              : { scale: [1, 1.1, 1] }
+          }
+          className={cn("tabular-nums text-right", COUNT_VALUE_WIDTH_CLASS)}
           transition={
             shouldReduceMotion
               ? { duration: 0 }
               : {
-                  duration: 0.3,
-                  ease: EASE_OUT_CUBIC,
-                }
+                duration: 0.3,
+                ease: EASE_OUT_CUBIC,
+              }
           }
         >
-          {displayCount.toLocaleString()}
+          {countValue}
         </motion.span>
-        <span className="text-foreground/70 text-sm">
-          {displayCount === 1 ? "star" : "stars"}
+        <span
+          className={cn(
+            "text-foreground/70 text-sm",
+            COUNT_LABEL_WIDTH_CLASS,
+          )}
+        >
+          {countLabel}
         </span>
       </motion.div>
     </div>
