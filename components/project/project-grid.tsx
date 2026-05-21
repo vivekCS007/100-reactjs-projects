@@ -149,9 +149,12 @@ export default function ProjectGrid() {
                     transition: { duration: 0.2 },
                   }}
                   layout
-                  className="group relative overflow-hidden rounded-2xl border border-border backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/10"
+                  className="flex flex-col h-full group relative overflow-hidden rounded-2xl border border-border backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/10"
                 >
-                  <div className="relative aspect-video overflow-hidden">
+                  <Dialog>
+                  <DialogTrigger asChild>
+                      <div className="cursor-pointer outline-none flex-1 flex flex-col group/card">
+                        <div className="relative aspect-video overflow-hidden shrink-0">
                     <Image
                       src={`/projects/${item.projectImage}`}
                       alt={item.projectName}
@@ -164,7 +167,7 @@ export default function ProjectGrid() {
                     />
                     <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/20 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                     <button
-                      onClick={() => toggleFavorite(item.projectName)}
+                      onClick={(e) => { e.preventDefault(); e.stopPropagation(); toggleFavorite(item.projectName); }}
                       aria-pressed={favorites.includes(item.projectName)}
                       aria-label={
                         favorites.includes(item.projectName)
@@ -181,7 +184,7 @@ export default function ProjectGrid() {
                     </button>
                   </div>
 
-                  <div className="relative flex flex-col gap-4 p-6">
+                  <div className="relative flex flex-col gap-4 p-6 pb-6 flex-1">
                     <div className="flex items-center justify-between gap-3">
                       <h3 className="text-lg font-semibold tracking-tight text-start">
                         {item.projectName}
@@ -217,14 +220,11 @@ export default function ProjectGrid() {
                         ))}
                       </div>
                     )}
-
-                <Dialog>
-                    <DialogTrigger asChild>
-                      <Button variant="outline" size="sm" className="mt-3 w-full flex items-center justify-center gap-2 h-8 text-xs bg-muted/20 hover:bg-muted/50 border-border text-foreground/80">
-                        <FaSearch /> View Project Details
-                      </Button>
+                      </div>
+                    </div>
                     </DialogTrigger>
-                    <DialogContent className="sm:max-w-[600px] max-h-[90vh] overflow-y-auto">
+
+                    <DialogContent className="sm:max-w-[800px] w-[95vw] max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
                       <DialogHeader>
                         <DialogTitle className="text-xl">{item.projectName}</DialogTitle>
                         <DialogDescription className="text-sm mt-1.5">
@@ -297,11 +297,11 @@ export default function ProjectGrid() {
                         </div>
                       )}
                     </DialogContent>
-                  </Dialog>
 
-                    <div className="mt-5 flex items-center gap-3">
+                    <div className="mt-auto flex items-center gap-3 p-6 pt-5 relative z-10 border-t border-border/10 pointer-events-auto">
                       {item.liveLink && (
                         <Link
+                          onClick={(e) => e.stopPropagation()}
                           href={item.liveLink}
                           target="_blank"
                           className="flex h-9 w-9 items-center justify-center rounded-full border border-border bg-background transition-all duration-300 hover:scale-110 hover:bg-muted"
@@ -312,6 +312,7 @@ export default function ProjectGrid() {
 
                       {item.githubLink && (
                         <Link
+                          onClick={(e) => e.stopPropagation()}
                           href={item.githubLink}
                           target="_blank"
                           className="flex h-9 w-9 items-center justify-center rounded-full border border-border bg-background transition-all duration-300 hover:scale-110 hover:bg-muted"
@@ -322,6 +323,7 @@ export default function ProjectGrid() {
 
                       {item.ytLink && (
                         <Link
+                          onClick={(e) => e.stopPropagation()}
                           href={item.ytLink}
                           target="_blank"
                           className="flex h-9 w-9 items-center justify-center rounded-full border border-border bg-background transition-all duration-300 hover:scale-110 hover:bg-red-500 hover:text-white"
@@ -330,7 +332,7 @@ export default function ProjectGrid() {
                         </Link>
                       )}
                     </div>
-                  </div>
+                  </Dialog>
                 </motion.div>
               ))}
             </AnimatePresence>
