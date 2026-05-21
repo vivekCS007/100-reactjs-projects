@@ -184,7 +184,15 @@ export default function ProjectGrid() {
                     </button>
                   </div>
 
-                  <div className="relative flex flex-col gap-4 p-6 pb-6 flex-1">
+                  <div 
+                    className="relative flex flex-col gap-4 p-6 pb-6 flex-1 sm:cursor-pointer cursor-default"
+                    onClick={(e) => {
+                      if (typeof window !== 'undefined' && window.innerWidth < 640) {
+                        e.stopPropagation();
+                        e.preventDefault();
+                      }
+                    }}
+                  >
                     <div className="flex items-center justify-between gap-3">
                       <h3 className="text-lg font-semibold tracking-tight text-start">
                         {item.projectName}
